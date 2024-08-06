@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth.route');
 const protectedRoutes = require('./routes/protected');
 require('dotenv').config();
 
@@ -9,8 +9,7 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
+  useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected')).catch(err => console.error(err));
 
 app.use('/auth', authRoutes);
